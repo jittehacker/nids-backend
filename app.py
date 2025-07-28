@@ -1,10 +1,12 @@
 from flask import Flask, request, jsonify
 import requests
+import os
 
 app = Flask(__name__)
 
-API_KEY = "aoptrdSy26nBwbQHKxOuFFxO9_Z4_GDa1Cib4cmcTISW"
-DEPLOYMENT_URL = "https://us-south.ml.cloud.ibm.com/ml/v4/deployments/3216314a-f384-44c0-92bc-573e04958b7c/predictions?version=2021-05-01"
+API_KEY = os.getenv("API_KEY")
+DEPLOYMENT_URL = os.getenv("DEPLOYMENT_URL")
+
 
 def get_ibm_token():
     response = requests.post(
